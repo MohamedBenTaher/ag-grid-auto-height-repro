@@ -1,0 +1,234 @@
+/* ============================================
+   AG Grid Table - Linear-inspired styling
+   ============================================ */
+
+.ag-grid-table {
+  /* Linear-inspired color palette */
+  --ag-background-color: #ffffff;
+  --ag-foreground-color: #1f2023;
+  --ag-secondary-foreground-color: #6b6f76;
+  --ag-header-background-color: #ffffff;
+  --ag-header-foreground-color: #6b6f76;
+  --ag-border-color: #e6e6e6;
+  --ag-row-border-color: #f0f0f0;
+  --ag-row-hover-color: #f7f8f9;
+  --ag-selected-row-background-color: #eef0ff;
+  --ag-font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ag-font-size: 13px;
+  --ag-accent-color: #5e6ad2;
+
+  /* Allow popups to overflow */
+  overflow: visible !important;
+}
+
+/* ============================================
+   Global AG Grid Popup Styles (renders in body)
+   When popupParent is set to document.body, popups
+   render outside the grid container. These styles
+   ensure they are properly styled and visible.
+   ============================================ */
+body > .ag-popup {
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+}
+
+/* Ensure popup content can receive clicks even when inside modals/sheets */
+body > .ag-popup,
+body > .ag-popup * {
+  pointer-events: auto !important;
+}
+
+body > .ag-popup .ag-popup-editor {
+  background-color: white;
+  border: 1px solid #e6e6e6;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: visible !important;
+  pointer-events: auto !important;
+}
+
+/* ============================================
+   AG Grid Rich Select Editor Styling (v34+)
+   Linear-inspired clean dropdown design
+   ============================================ */
+
+/* Target all text in popup */
+.ag-popup,
+.ag-popup * {
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif !important;
+}
+
+/* Main Rich Select container - inherits cell width */
+.ag-rich-select {
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif !important;
+  font-size: 14px !important;
+  background-color: white !important;
+  border: 1px solid #e6e6e6 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  overflow: visible !important;
+}
+
+/* The dropdown list container - make it wider than the input */
+.ag-rich-select-list {
+  padding: 8px !important;
+  min-width: 450px !important;
+  width: max-content !important;
+  max-width: 550px !important;
+  background-color: white !important;
+  border: 1px solid #e6e6e6 !important;
+  border-radius: 8px !important;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.08) !important;
+  margin-top: 4px !important;
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif !important;
+}
+
+/* The virtual list viewport */
+.ag-rich-select-list .ag-virtual-list-viewport {
+  padding-right: 4px !important;
+}
+
+/* Individual items in the list */
+.ag-rich-select-list .ag-rich-select-row {
+  padding: 8px 12px !important;
+  height: 36px !important; /* Fixed height for items */
+  line-height: 20px !important;
+  border-radius: 4px !important;
+  margin-bottom: 2px !important;
+  cursor: pointer !important;
+  color: #1f2023 !important;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Hover state for items */
+.ag-rich-select-list .ag-rich-select-row:hover,
+.ag-rich-select-list .ag-rich-select-row.ag-rich-select-row-selected {
+  background-color: #f5f5f7 !important;
+  color: #1f2023 !important;
+}
+
+/* Selected item styling */
+.ag-rich-select-list .ag-rich-select-row.ag-rich-select-row-selected {
+  font-weight: 500 !important;
+  background-color: #f0f0f3 !important;
+}
+
+/* Hide the search box inside the list if we're using cell editor param allowTyping */
+.ag-rich-select-list .ag-rich-select-filter-wrapper {
+  padding: 8px !important;
+  border-bottom: 1px solid #e6e6e6 !important;
+  margin-bottom: 4px !important;
+}
+
+/* ============================================
+   Grid Container & Resizing
+   ============================================ */
+.ag-grid-table {
+  width: 100%;
+  border: 1px solid var(--ag-border-color);
+  border-radius: var(--ag-wrapper-border-radius);
+  overflow: hidden; /* Ensure rounded corners clip content */
+  transition: height 0.2s ease-out; /* Smooth height transitions */
+}
+
+/* Fixed height mode */
+.ag-grid-table--fixed-height {
+  height: 100%;
+  min-height: 400px;
+}
+
+/* Auto height mode handled by AG Grid automatically */
+
+/* ============================================
+   Text Selection in Cells
+   ============================================ */
+.ag-cell {
+  /* Allow text selection in cells */
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  cursor: text;
+}
+
+/* Except for checkbox/selection columns */
+.ag-cell-focus {
+  border-color: var(--ag-accent-color) !important;
+}
+
+/* ============================================
+   Custom Cell Styles
+   ============================================ */
+
+/* Numeric columns (right aligned) */
+.ag-grid-table__numeric {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  justify-content: flex-end;
+}
+
+/* Read-only cells */
+.ag-grid-table__readonly-cell {
+  background-color: #f9fafb !important;
+  color: var(--ag-secondary-foreground-color) !important;
+}
+
+/* Error cells (validation failed) */
+.ag-grid-table__entry-error {
+  background-color: #fef2f2 !important; /* red-50 */
+  color: #991b1b !important; /* red-800 */
+}
+
+.ag-grid-table__entry-error .ag-cell-value {
+  color: #991b1b !important;
+}
+
+/* ============================================
+   Entry Table Wrapper
+   ============================================ */
+.ag-grid-entry-wrapper {
+  position: relative;
+  z-index: 1; /* Ensure grid is above other elements but below modals */
+}
+
+/* Ensure dropdowns inside the grid don't get clipped */
+.ag-theme-alpine .ag-root-wrapper,
+.ag-theme-alpine .ag-root-wrapper-body,
+.ag-theme-alpine .ag-root,
+.ag-theme-alpine .ag-body-viewport,
+.ag-theme-alpine .ag-center-cols-viewport {
+  overflow: visible !important;
+}
+
+/* But keep horizontal scrollbar if needed */
+.ag-theme-alpine .ag-body-horizontal-scroll-viewport {
+  overflow-x: auto !important;
+  height: 12px !important;
+}
+
+/* Hide vertical scrollbar in autoHeight mode */
+.ag-root-wrapper-body.ag-layout-auto-height {
+  overflow-y: hidden !important;
+}
